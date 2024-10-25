@@ -19,18 +19,32 @@ public class Lab3P1_Cristopher_Sibrian {
         // TODO code application logic here
         Scanner lab = new Scanner(System.in);
         char resp;
-        int menu, r, n, game = 1;
+        int menu, r, n, game = 1, reloj;
+        System.out.println("Bienvenido al juego del lab3");
         do{
-            System.out.println("Bienvenido al juego del lab3");
             System.out.println("Que juego desea jugar?");
             System.out.println("1. Reloj de arena");
             System.out.println("2. Calculadora");
             System.out.println("3. Sandwich");
-            System.out.println("4. Salir");
             menu = lab.nextInt();
             switch(menu){
                 case 1: 
-                    System.out.println("Ingrese el tamaño que desea el reloj");
+                    System.out.println("Ingrese el tamaño que desea el reloj: ");
+                    reloj = lab.nextInt();
+                    if (reloj >= 7 && reloj%2!=0){
+                        for (int up = 0; up< reloj; up++){
+                            for (int ab = 0; ab<reloj; ab++){
+                                System.out.print(" ");
+                            }
+                            for(int ab= 0; ab<(up*2); ab++){
+                                System.out.print("*");
+                            }
+                            System.out.println();
+                        }
+                    }else {
+                        System.out.println("El tamano debe ser impar o mayor a 7");
+                    }
+                    
                     break;
                 case 2: 
                     System.out.println("Ingrese el valor de n: ");
@@ -58,7 +72,7 @@ public class Lab3P1_Cristopher_Sibrian {
                     break;
                 case 3:
                     do{
-                        System.out.println("Ingrese el tamano del sandwich");
+                        System.out.println("Ingrese el tamano del sandwich: ");
                         game = lab.nextInt();
                         if (game >= 7 && game%2!=0){
                             for (int y = 1; y<= game; y++){
@@ -77,10 +91,13 @@ public class Lab3P1_Cristopher_Sibrian {
                         }
                     }while (game < 7 || game%2==0);
                     break;
+                default:
+                    System.out.println("Ingrese una opcion valida");
             }
             System.out.println("Desea jugar otro juego? ");
             resp = lab.next().charAt(0);
-        }while(resp == 's');
+        }while(resp == 's' ||  resp == 'S');
+        System.out.println("Gracias por jugar");
         
     }
         
